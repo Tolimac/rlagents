@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://qca0a3vu12sm"]
 
-[ext_resource type="Script" path="res://character_body_3d.gd" id="1_os3hv"]
-[ext_resource type="Script" path="res://ai_controller_3d.gd" id="2_ph0ux"]
-[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_a6dxr"]
+[ext_resource type="Script" path="res://addons/character_body_3d.gd" id="1_q1fos"]
+[ext_resource type="Script" path="res://addons/ai_controller_3d.gd" id="2_ikeut"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="3_30t3w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2rvv"]
 emission_enabled = true
@@ -29,19 +29,19 @@ size = Vector3(0.910016, 4.33545, 10.3215)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Agent" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16281, 0.679835, -0.002666)
-script = ExtResource("1_os3hv")
+script = ExtResource("1_q1fos")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Agent"]
 material_override = SubResource("StandardMaterial3D_c2rvv")
 mesh = SubResource("BoxMesh_pe8o7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Agent"]
 shape = SubResource("BoxShape3D_cm3f0")
 
-[node name="AIController3D" type="Node3D" parent="CharacterBody3D"]
-script = ExtResource("2_ph0ux")
+[node name="AIController3D" type="Node3D" parent="Agent"]
+script = ExtResource("2_ikeut")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 0.15, 0, 0, 0, 10, 0.0178337, 0, -0.0178342)
@@ -84,7 +84,8 @@ shape = SubResource("BoxShape3D_mu1qg")
 transform = Transform3D(1, 0, 0, 0, 0.999476, 0.0323528, 0, -0.0323528, 0.999476, 0, 2.88495, 8.86687)
 
 [node name="Sync" type="Node" parent="."]
-script = ExtResource("3_a6dxr")
+script = ExtResource("3_30t3w")
+speed_up = 100.0
 
-[connection signal="body_shape_entered" from="Target" to="CharacterBody3D" method="_on_target_body_shape_entered"]
-[connection signal="body_shape_entered" from="Walls" to="CharacterBody3D" method="_on_walls_body_shape_entered"]
+[connection signal="body_shape_entered" from="Target" to="Agent" method="_on_target_body_shape_entered"]
+[connection signal="body_shape_entered" from="Walls" to="Agent" method="_on_walls_body_shape_entered"]

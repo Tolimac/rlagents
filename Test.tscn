@@ -1,0 +1,116 @@
+[gd_scene load_steps=20 format=3 uid="uid://dpm0dynsm24ia"]
+
+[ext_resource type="Texture2D" uid="uid://gomedctw163o" path="res://Textures/Grid/Dark/texture_08.png" id="1_ma01o"]
+[ext_resource type="Texture2D" uid="uid://ddocqg3oekhqr" path="res://Textures/Grid/Red/texture_03.png" id="2_0wt1c"]
+[ext_resource type="Texture2D" uid="uid://gheb8kpyo5ff" path="res://Textures/Grid/Light/texture_05.png" id="3_ee11m"]
+[ext_resource type="Script" path="res://addons/character_body_3d.gd" id="4_rb6a6"]
+[ext_resource type="Script" path="res://addons/ai_controller_3d.gd" id="5_6qmni"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="6_jb0jw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khi1i"]
+albedo_texture = ExtResource("1_ma01o")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rlcth"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jel4r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mislm"]
+albedo_texture = ExtResource("2_0wt1c")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ir8tl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7uu0"]
+size = Vector3(3.06653, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_antd2"]
+albedo_texture = ExtResource("2_0wt1c")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_615ll"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4h80k"]
+albedo_color = Color(0, 0.825, 0.99, 1)
+albedo_texture = ExtResource("3_ee11m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxtas"]
+albedo_color = Color(0, 0.825, 0.99, 1)
+albedo_texture = ExtResource("3_ee11m")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7l55s"]
+emission_enabled = true
+emission = Color(0.944803, 0.505664, 0.158359, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qaxc6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_csppr"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(11.1674, 0, 0, 0, 0.206278, 0, 0, 0, 10.8305, -0.00132964, 0, 0.000487128)
+material_override = SubResource("StandardMaterial3D_khi1i")
+mesh = SubResource("BoxMesh_rlcth")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_jel4r")
+
+[node name="RedFlag" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.177256, 0, 0, 0, 1, 0, 0, 0, 0.265666, -5.20587, 0.630047, 0.000487128)
+material_override = SubResource("StandardMaterial3D_mislm")
+mesh = SubResource("BoxMesh_ir8tl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RedFlag"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedFlag/StaticBody3D"]
+shape = SubResource("BoxShape3D_y7uu0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RedFlag"]
+transform = Transform3D(2.36719, 0, 0, 0, 0.332583, 0, 0, 0, 0.504238, 1.51905, 0.286177, -0.0360088)
+material_override = SubResource("StandardMaterial3D_antd2")
+mesh = SubResource("BoxMesh_615ll")
+
+[node name="BlueFlag" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.177256, 0, -4.01145e-08, 0, 1, 0, 2.67649e-08, 0, -0.265666, 5.22465, 0.630047, -0.00360687)
+material_override = SubResource("StandardMaterial3D_4h80k")
+mesh = SubResource("BoxMesh_ir8tl")
+
+[node name="Area3D" type="Area3D" parent="BlueFlag"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BlueFlag/Area3D"]
+transform = Transform3D(2.36719, 0, -7.10543e-15, 0, 0.332583, 0, 0, 0, 0.504238, 1.51905, 0.286177, -0.0360088)
+material_override = SubResource("StandardMaterial3D_qxtas")
+mesh = SubResource("BoxMesh_615ll")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlueFlag/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 4.26326e-14, 0, 1, 1.03326, 0, -1.86265e-09)
+shape = SubResource("BoxShape3D_y7uu0")
+
+[node name="Agent" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.44, 0, 0, 0, 0.44, 0, 0, 0, 0.44, -3.92752, 0.326493, -0.002666)
+script = ExtResource("4_rb6a6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Agent"]
+material_override = SubResource("StandardMaterial3D_7l55s")
+mesh = SubResource("BoxMesh_qaxc6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Agent"]
+shape = SubResource("BoxShape3D_csppr")
+
+[node name="AIController3D" type="Node3D" parent="Agent"]
+script = ExtResource("5_6qmni")
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("6_jb0jw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14045, 5.96876)
+
+[connection signal="body_shape_entered" from="BlueFlag/Area3D" to="Agent" method="_on_area_3d_body_shape_entered"]

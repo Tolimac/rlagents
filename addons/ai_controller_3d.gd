@@ -4,7 +4,8 @@ var move = Vector3.ZERO
 
 
 @onready var character_body_3d = $".."
-@onready var target = $"../../Target"
+@onready var target = $"../../BlueFlag/Area3D"
+
 
 func get_obs() -> Dictionary:
 	var obs := [

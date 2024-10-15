@@ -31,11 +31,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_target_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	position = Vector3(-3.163,0.68,-0.003)
-	ai_controller_3d.reward += 1.0
+	
 
-
-func _on_walls_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	position = Vector3(-3.163,0.68,-0.003)
+func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	position = Vector3(0,0,0)
 	ai_controller_3d.reward -= 1.0
