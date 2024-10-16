@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dpm0dynsm24ia"]
+[gd_scene load_steps=22 format=3 uid="uid://dpm0dynsm24ia"]
 
 [ext_resource type="Texture2D" uid="uid://gomedctw163o" path="res://Textures/Grid/Dark/texture_08.png" id="1_ma01o"]
 [ext_resource type="Texture2D" uid="uid://ddocqg3oekhqr" path="res://Textures/Grid/Red/texture_03.png" id="2_0wt1c"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://addons/character_body_3d.gd" id="4_rb6a6"]
 [ext_resource type="Script" path="res://addons/ai_controller_3d.gd" id="5_6qmni"]
 [ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="6_jb0jw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_av8io"]
+size = Vector3(0.910016, 4.33545, 10.3215)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khi1i"]
 albedo_texture = ExtResource("1_ma01o")
@@ -49,7 +52,28 @@ emission = Color(0.944803, 0.505664, 0.158359, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_csppr"]
 
+[sub_resource type="Environment" id="Environment_n21hy"]
+
 [node name="Node3D" type="Node3D"]
+
+[node name="Walls" type="Area3D" parent="."]
+transform = Transform3D(1.095, 0, 0, 0, 1.095, 0, 0, 0, 1.095, -0.388583, 2.14045, 0.181517)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19501, 0.202742, -0.339966)
+shape = SubResource("BoxShape3D_av8io")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0233664, 0.0340023, -5.70339)
+shape = SubResource("BoxShape3D_av8io")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 5.51867, 0, -0.0416045)
+shape = SubResource("BoxShape3D_av8io")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(7.54979e-08, 0, -1, 0, 1, 0, 1, 0, 7.54979e-08, 0.0061307, 0, 5.51254)
+shape = SubResource("BoxShape3D_av8io")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(11.1674, 0, 0, 0, 0.206278, 0, 0, 0, 10.8305, -0.00132964, 0, 0.000487128)
@@ -113,4 +137,8 @@ script = ExtResource("6_jb0jw")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14045, 5.96876)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n21hy")
+
+[connection signal="body_shape_entered" from="Walls" to="Agent" method="_on_walls_body_shape_entered"]
 [connection signal="body_shape_entered" from="BlueFlag/Area3D" to="Agent" method="_on_area_3d_body_shape_entered"]
