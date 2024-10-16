@@ -26,18 +26,17 @@ func _physics_process(delta):
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 		#velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	velocity.x = ai_controller_3d.move.x
-	velocity.z = ai_controller_3d.move.z
+	velocity.x = ai_controller_3d.move.x * 3
+	velocity.z = ai_controller_3d.move.z * 3
 	move_and_slide()
 
 
 	
 
-func _on_area_3d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	position = Vector3(-3.928,0.326,-0.003)
-	ai_controller_3d.reward += 1.0
-
-
 func _on_walls_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	position = Vector3(-3.928,0.326,-0.003)
+	position = Vector3(3.928,0.326,0)
 	ai_controller_3d.reward -= 1.0
+
+func _on_red_flag_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	position = Vector3(3.928,0.326,0)
+	ai_controller_3d.reward += 1.0
