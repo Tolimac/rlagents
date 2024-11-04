@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://5qxinb8i4t1a"]
+
+[ext_resource type="Material" uid="uid://b783wm6o1jpvm" path="res://Materials/Orange.tres" id="1_5igpi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1pgr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8hifp"]
+size = Vector3(2, 0.25, 2)
+
+[sub_resource type="Animation" id="Animation_tri2v"]
+resource_name = "Move"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 2.7, 1, -2, 0, 0)
+
+[sub_resource type="Animation" id="Animation_qc2n4"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r2v4r"]
+_data = {
+"Move": SubResource("Animation_tri2v"),
+"RESET": SubResource("Animation_qc2n4")
+}
+
+[node name="MovingFloor" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.100562, -2.89296)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.25, 0, 0, 0, 2, 0, 0, 0)
+material_override = ExtResource("1_5igpi")
+mesh = SubResource("BoxMesh_b1pgr")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+shape = SubResource("BoxShape3D_8hifp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_r2v4r")
+}
+autoplay = "Move"

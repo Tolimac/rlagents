@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx7poo4cjgp8x"]
+
+[ext_resource type="Material" uid="uid://b3rau0hb28hg7" path="res://Materials/Gray.tres" id="1_0iq4e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_prn6d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nk1w"]
+
+[node name="FloorStatic" type="MeshInstance3D"]
+transform = Transform3D(1.00039, 0, 0, 0, 0.25085, 0, 0, 0, 1.00039, -0.004, -0.25, 0.006)
+material_override = ExtResource("1_0iq4e")
+mesh = SubResource("BoxMesh_prn6d")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_7nk1w")

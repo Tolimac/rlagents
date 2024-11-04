@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtgt83vlddo08"]
+
+[ext_resource type="Script" path="res://Scripts/RedAi.gd" id="2_04lgg"]
+[ext_resource type="Script" path="res://Scripts/RedChar.gd" id="2_f51pq"]
+[ext_resource type="Script" path="res://Scenes/eyes.gd" id="3_5rhiw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ggl8y"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_obbp3"]
+
+[node name="Agent" type="Node3D"]
+
+[node name="AIController3D" type="Node3D" parent="."]
+script = ExtResource("2_04lgg")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("2_f51pq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_ggl8y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_obbp3")
+
+[node name="Eyes" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11237, 0)
+script = ExtResource("3_5rhiw")
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Eyes"]
+transform = Transform3D(0.62097, -0.783834, 0, 0.783834, 0.62097, 0, 0, 0, 1, 0.510523, -0.938217, -0.0799243)
+target_position = Vector3(0, -4.86, 0)
+
+[node name="RayCast3D2" type="RayCast3D" parent="CharacterBody3D/Eyes"]
+transform = Transform3D(-2.71435e-08, 3.42625e-08, 1, 0.783834, 0.62097, 0, -0.62097, 0.783834, -4.37114e-08, 0, -0.938217, -0.535296)
+target_position = Vector3(0, -4.86, 0)
+
+[node name="RayCast3D3" type="RayCast3D" parent="CharacterBody3D/Eyes"]
+transform = Transform3D(-1.51959e-08, 4.67201e-08, -1, 0.783834, 0.62097, 0, 0.62097, -0.783834, -5.96046e-08, 1.06388e-09, -0.924076, 0.530434)
+target_position = Vector3(0, -4.86, 0)
+
+[node name="RayCast3D4" type="RayCast3D" parent="CharacterBody3D/Eyes"]
+transform = Transform3D(-0.62097, 0.783834, -8.74228e-08, 0.783834, 0.62097, 0, 5.42869e-08, -6.8525e-08, -1, -0.530739, -0.938217, -0.0339142)
+target_position = Vector3(0, -4.86, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10.2403, 0)

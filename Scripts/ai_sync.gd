@@ -43,7 +43,7 @@ class TrainingData:
 ## To show terminal
 @export var b_show_terminal: bool = true
 ## Train total timesteps to run
-@export var terminal_port: int = 11028
+@export var terminal_port: int = 11008
 ## Offset between different angents. eg. enemy and player has different port and abs(enemy - player) = [member port_offset_bettween_agent]
 @export_range(10, 1000, 10) var port_offset_bettween_agent:int = 10
 @export_range(5000, 10000000, 1.0) var timesteps: int = 100000

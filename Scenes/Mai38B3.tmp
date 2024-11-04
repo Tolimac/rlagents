@@ -1,6 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dphn02bh1p8yf"]
+[gd_scene load_steps=28 format=3 uid="uid://dphn02bh1p8yf"]
 
 [ext_resource type="PackedScene" uid="uid://bx7poo4cjgp8x" path="res://ObjectsPrefabs/floor_static.tscn" id="1_1n73l"]
+[ext_resource type="Material" uid="uid://b3rau0hb28hg7" path="res://Materials/Gray.tres" id="2_w78wc"]
 [ext_resource type="PackedScene" uid="uid://5qxinb8i4t1a" path="res://ObjectsPrefabs/moving_floor.tscn" id="4_sf233"]
 [ext_resource type="Material" uid="uid://b783wm6o1jpvm" path="res://Materials/Orange.tres" id="5_iu7op"]
 [ext_resource type="Material" uid="uid://dr02dtojr0egx" path="res://Materials/Red.tres" id="6_fu5dh"]
@@ -8,6 +9,9 @@
 [ext_resource type="Material" uid="uid://0nq0opudpw38" path="res://Materials/Goal.tres" id="7_oxptq"]
 [ext_resource type="PackedScene" uid="uid://dtgt83vlddo08" path="res://ObjectsPrefabs/agent.tscn" id="8_l153b"]
 [ext_resource type="Script" path="res://Scripts/ai_sync.gd" id="9_at8wk"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_85bmn"]
+left_to_right = 1.0
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04mqc"]
 sky_horizon_color = Color(0.725854, 0.529561, 0.595037, 1)
@@ -120,7 +124,7 @@ size = Vector3(1.57471, 2.21106, 1)
 [node name="Node3D" type="Node3D"]
 
 [node name="FloorStatic" parent="." instance=ExtResource("1_1n73l")]
-transform = Transform3D(-1.31134e-07, 0, -3, 0, 0.251, 0, 3, 0, -1.31134e-07, 7.09301, -0.21314, -7.10633)
+transform = Transform3D(-1.31134e-07, 0, -3, 0, 0.251, 0, 3, 0, -1.31134e-07, 7.09301, -0.250001, -7.38699)
 
 [node name="FloorStatic8" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 4.4364, 0, 0, 0, 3, 6.71728, 0.516262, 10.4884)
@@ -131,6 +135,16 @@ transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.16516, -0.25, -0.14082)
 [node name="FloorStatic3" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.31191, 0.722098, 2.87858)
 
+[node name="Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.32838, 0.371812, 0.855396)
+material_override = ExtResource("2_w78wc")
+mesh = SubResource("PrismMesh_85bmn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Ramp/StaticBody3D"]
+polygon = PackedVector2Array(-0.492171, -0.489683, 0.4968, -0.491866, 0.490515, 0.499279)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rhfko")
 
@@ -138,10 +152,10 @@ environment = SubResource("Environment_rhfko")
 transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 8, 0)
 
 [node name="MovingFloor" parent="." instance=ExtResource("4_sf233")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.24982, -0.246494, -2.57281)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.24982, -0.283355, -2.72686)
 
 [node name="Punch" type="Node3D" parent="."]
-transform = Transform3D(-1.08749e-07, 0, -2.48788, 0, 2.48788, 0, 2.48788, 0, -1.08749e-07, 10.8276, 1.97157, 2.77169)
+transform = Transform3D(-1.08749e-07, 0, -2.48788, 0, 2.48788, 0, 2.48788, 0, -1.08749e-07, 11.4321, 1.97157, 2.77169)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Punch"]
 constant_linear_velocity = Vector3(100, 100, 100)
@@ -173,7 +187,7 @@ libraries = {
 autoplay = "new_animation"
 
 [node name="Punch2" type="Node3D" parent="."]
-transform = Transform3D(-1.08749e-07, 0, -2.48788, 0, 2.48788, 0, 2.48788, 0, -1.08749e-07, 10.8276, 2.8293, 6.85448)
+transform = Transform3D(-1.08749e-07, 0, -2.48788, 0, 2.48788, 0, 2.48788, 0, -1.08749e-07, 11.4321, 2.8293, 6.85448)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Punch2"]
 constant_linear_velocity = Vector3(100, 100, 100)
@@ -206,6 +220,26 @@ autoplay = "new_animation"
 
 [node name="FloorStatic4" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.31191, 1.70133, 6.62197)
+
+[node name="Ramp2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.32838, 1.34408, 4.59879)
+material_override = ExtResource("2_w78wc")
+mesh = SubResource("PrismMesh_85bmn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp2"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Ramp2/StaticBody3D"]
+polygon = PackedVector2Array(-0.492171, -0.489683, 0.4968, -0.491866, 0.490515, 0.499279)
+
+[node name="Ramp3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.32838, 2.26146, 8.48188)
+material_override = ExtResource("2_w78wc")
+mesh = SubResource("PrismMesh_85bmn")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ramp3"]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="Ramp3/StaticBody3D"]
+polygon = PackedVector2Array(-0.492171, -0.489683, 0.4968, -0.491866, 0.490515, 0.499279)
 
 [node name="FloorStatic5" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 14.3484, -0.533355, -0.291636)
@@ -260,10 +294,10 @@ mesh = SubResource("BoxMesh_yvsmj")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="Agent" parent="." instance=ExtResource("8_l153b")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.09901, 0.43207, -7.10233)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.09901, -9.53674e-07, -7.38299)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.954761, 0.104143, -0.278543, 0, 0.936672, 0.350207, 0.297375, 0.334364, -0.894298, 8.42622, 5.28, -15.9441)
 
 [node name="AISync" type="Node" parent="."]
 script = ExtResource("9_at8wk")
-control_mode = 2
-action_repeat = 5
-onnx_model_path = "res://model.onnx"

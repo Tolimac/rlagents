@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdfisiyug4thc"]
+[gd_scene load_steps=4 format=3 uid="uid://bdfisiyug4thc"]
 
 [ext_resource type="PackedScene" uid="uid://dpm0dynsm24ia" path="res://Scenes/Test.tscn" id="1_tinf4"]
-[ext_resource type="Script" path="res://Scripts/ai_sync.gd" id="2_krqp2"]
+[ext_resource type="Script" path="res://addons/godot_rl_agents/sync.gd" id="2_wyrpn"]
+[ext_resource type="PackedScene" uid="uid://c2lgml1rgo2lu" path="res://ObjectsPrefabs/punch.tscn" id="3_w1rnh"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -10,11 +11,11 @@
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.925996, 0.196483, 0.322375, -0.32534, -0.0179062, 0.945428, 0.191533, -0.980344, 0.0473427, 0, 12.9081, 0)
 
-[node name="Sync" type="Node" parent="."]
-script = ExtResource("2_krqp2")
-action_repeat = 24
-speed_up = 1000.0
-terminal_port = 11008
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93, 6.657, 19.72)
+
+[node name="Sync" type="Node" parent="."]
+script = ExtResource("2_wyrpn")
+
+[node name="Punch" parent="." instance=ExtResource("3_w1rnh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129628, 0.718417, -1.87605)
