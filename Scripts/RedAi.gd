@@ -28,7 +28,7 @@ func get_obs() -> Dictionary:
 
 
 func get_reward() -> float:
-	reward = character_body_3d.compute_reward(reward)
+	reward = character_body_3d.potential_based_compute(reward)
 	#print(reward)
 	return reward
 

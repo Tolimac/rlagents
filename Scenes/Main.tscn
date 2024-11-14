@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dphn02bh1p8yf"]
+[gd_scene load_steps=27 format=3 uid="uid://dphn02bh1p8yf"]
 
 [ext_resource type="PackedScene" uid="uid://bx7poo4cjgp8x" path="res://ObjectsPrefabs/floor_static.tscn" id="1_1n73l"]
 [ext_resource type="PackedScene" uid="uid://5qxinb8i4t1a" path="res://ObjectsPrefabs/moving_floor.tscn" id="4_sf233"]
@@ -117,6 +117,9 @@ size = Vector3(1.57471, 2.21106, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_yvsmj"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5cgc"]
+size = Vector3(3.22229, 1, 3.41699)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="FloorStatic" parent="." instance=ExtResource("1_1n73l")]
@@ -126,7 +129,10 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 0.251, 0, 3, 0, -1.31134e-07, 7.
 transform = Transform3D(3, 0, 0, 0, 4.4364, 0, 0, 0, 3, 6.71728, 0.516262, 10.4884)
 
 [node name="FloorStatic2" parent="." instance=ExtResource("1_1n73l")]
-transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.16516, -0.25, -0.14082)
+transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.51229, -0.25, 0.97778)
+
+[node name="FloorStatic9" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.16516, -0.25, -14.1692)
 
 [node name="FloorStatic3" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 7.31191, 0.722098, 2.87858)
@@ -138,7 +144,10 @@ environment = SubResource("Environment_rhfko")
 transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 8, 0)
 
 [node name="MovingFloor" parent="." instance=ExtResource("4_sf233")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.24982, -0.246494, -2.57281)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.24982, -0.246494, -9.60951)
+
+[node name="MovingFloor7" parent="." instance=ExtResource("4_sf233")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.24982, -0.246494, -1.53468)
 
 [node name="Punch" type="Node3D" parent="."]
 transform = Transform3D(-1.08749e-07, 0, -2.48788, 0, 2.48788, 0, 2.48788, 0, -1.08749e-07, 10.8276, 1.97157, 2.77169)
@@ -221,6 +230,39 @@ skeleton = NodePath("../MovingFloor")
 [node name="MovingFloor3" parent="." instance=ExtResource("4_sf233")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.2503, -0.566709, 4.98323)
 
+[node name="FloorStatic10" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(2.86035, 0, 0.904664, 0, 0.251, 0, -0.904664, 0, 2.86035, 12.0354, -0.533355, -12.8467)
+skeleton = NodePath("../MovingFloor")
+
+[node name="FloorStatic11" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(0.904664, 0, -2.86035, 0, 0.251, 0, 2.86035, 0, 0.904664, 14.2796, -0.533355, -5.39258)
+skeleton = NodePath("../MovingFloor")
+
+[node name="MovingFloor4" parent="." instance=ExtResource("4_sf233")]
+transform = Transform3D(0.301555, 0, -0.953449, 0, 1, 0, 0.953449, 0, 0.301555, 13.5326, -0.566709, -7.78783)
+
+[node name="FloorStatic12" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(2.4075, 0.014352, -1.78172, -0.0680291, 0.250398, 0.196215, 1.78866, -0.00979396, 2.40561, 2.95518, -0.819642, -14.3801)
+skeleton = NodePath("../MovingFloor")
+
+[node name="FloorStatic13" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(-1.78172, 0.014352, -2.4075, 0.196215, 0.250398, 0.0680291, 2.40561, -0.00979396, -1.78866, -1.75447, -0.308087, -8.20291)
+skeleton = NodePath("../MovingFloor")
+
+[node name="MovingFloor5" parent="." instance=ExtResource("4_sf233")]
+transform = Transform3D(-0.593906, 0.0571793, -0.8025, 0.0654049, 0.997601, 0.0226764, 0.801871, -0.0390198, -0.596222, -0.258227, -0.50569, -10.2076)
+
+[node name="FloorStatic14" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(1.57382, -0.00104068, 2.554, -0.0185217, 0.250986, 0.0260231, -2.55397, -0.00246148, 1.57366, -3.35562, -0.571539, -4.28201)
+skeleton = NodePath("../MovingFloor")
+
+[node name="FloorStatic15" parent="." instance=ExtResource("1_1n73l")]
+transform = Transform3D(2.554, -0.00104068, -1.57382, 0.0260232, 0.250986, 0.0185217, 1.57366, -0.00246148, 2.55397, 3.21437, -0.503351, -0.106922)
+skeleton = NodePath("../MovingFloor")
+
+[node name="MovingFloor6" parent="." instance=ExtResource("4_sf233")]
+transform = Transform3D(0.851334, -0.00414613, -0.524607, 0.00867438, 0.999943, 0.00617391, 0.524552, -0.00980667, 0.851322, 1.08373, -0.558529, -1.43122)
+
 [node name="FloorStatic7" parent="." instance=ExtResource("1_1n73l")]
 transform = Transform3D(3, 0, 0, 0, 0.251, 0, 0, 0, 3, 14.2565, -0.533355, 10.5161)
 skeleton = NodePath("../MovingFloor")
@@ -264,6 +306,67 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.0990
 
 [node name="AISync" type="Node" parent="."]
 script = ExtResource("9_at8wk")
-control_mode = 2
 action_repeat = 5
-onnx_model_path = "res://model.onnx"
+speed_up = 500.0
+onnx_model_path = "res://PPOSmoothed.onnx"
+
+[node name="Reward" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.18501, 0.244598, -14.1411)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reward"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150085, 0, -0.108887)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward2" type="Area3D" parent="."]
+transform = Transform3D(0.817507, 0, -0.575919, 0, 1, 0, 0.575919, 0, 0.817507, -1.66679, 0.244598, -8.11636)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reward2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150085, 0, -0.108887)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward3" type="Area3D" parent="."]
+transform = Transform3D(0.976326, 0, 0.216303, 0, 1, 0, -0.216303, 0, 0.976326, 14.5398, 0.244598, -5.1586)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reward3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150085, 0, -0.108887)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward4" type="Area3D" parent="."]
+transform = Transform3D(0.999803, 0, 0.019843, 0, 1, 0, -0.019843, 0, 0.999803, 7.62205, 0.244598, 0.330823)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reward4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150085, 0, -0.108887)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward5" type="Area3D" parent="."]
+transform = Transform3D(0.999803, 0, 0.019843, 0, 1, 0, -0.019843, 0, 0.999803, 6.6761, 2.43923, 10.4116)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Reward5"]
+transform = Transform3D(1, 0, -2.5332e-07, 0, 1, 0, 2.5332e-07, 0, 1, -0.300169, 0, -0.217772)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward5_1" type="Area3D" parent="."]
+transform = Transform3D(0.999803, 0, 0.019843, 0, 1, 0, -0.019843, 0, 0.999803, 10.1871, 2.43923, 10.4116)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Reward5_1"]
+transform = Transform3D(1, 0, -2.5332e-07, 0, 1, 0, 2.5332e-07, 0, 1, -0.300169, 0, -0.217772)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[node name="Reward4_1" type="Area3D" parent="."]
+transform = Transform3D(0.999803, 0, 0.019843, 0, 1, 0, -0.019843, 0, 0.999803, 14.2054, 0.244598, -0.375991)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reward4_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.150085, 0, -0.108887)
+shape = SubResource("BoxShape3D_f5cgc")
+
+[connection signal="area_entered" from="Reward" to="Agent/CharacterBody3D" method="Reward1"]
+[connection signal="area_entered" from="Reward2" to="Agent/CharacterBody3D" method="_on_reward_2_area_entered"]
+[connection signal="area_entered" from="Reward3" to="Agent/CharacterBody3D" method="_on_reward_3_area_entered"]
+[connection signal="area_entered" from="Reward4" to="Agent/CharacterBody3D" method="_on_reward_4_area_entered"]
+[connection signal="area_entered" from="Reward5" to="Agent/CharacterBody3D" method="_on_reward_5_area_entered"]
+[connection signal="area_entered" from="Reward5_1" to="Agent/CharacterBody3D" method="_on_reward_5_1_area_entered"]
+[connection signal="area_entered" from="Reward4_1" to="Agent/CharacterBody3D" method="_on_reward_4_1_area_entered"]
+
+[editable path="MovingFloor"]
+[editable path="MovingFloor7"]
+[editable path="Agent"]

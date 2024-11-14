@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtgt83vlddo08"]
+[gd_scene load_steps=7 format=3 uid="uid://dtgt83vlddo08"]
 
 [ext_resource type="Script" path="res://Scripts/RedAi.gd" id="2_04lgg"]
 [ext_resource type="Script" path="res://Scripts/RedChar.gd" id="2_f51pq"]
 [ext_resource type="Script" path="res://Scenes/eyes.gd" id="3_5rhiw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ggl8y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uf73f"]
+albedo_color = Color(0.917287, 0, 0.240163, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_obbp3"]
 
@@ -20,6 +23,7 @@ script = ExtResource("2_f51pq")
 shape = SubResource("BoxShape3D_ggl8y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
+material_override = SubResource("StandardMaterial3D_uf73f")
 mesh = SubResource("BoxMesh_obbp3")
 
 [node name="Eyes" type="Node3D" parent="CharacterBody3D"]
