@@ -4,5 +4,5 @@ PPO - StableBaselines3
 Reward Functions -
 Potential Based Reward Shaping,
 Smoothed Distance Reward,
-Distance Reward
+and Distance Reward
  
